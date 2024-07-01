@@ -71,8 +71,6 @@
 
     # Formatters and language servers
     nixpkgs-fmt
-    nodePackages.bash-language-server
-    nodePackages.pyright
     stylua
     sumneko-lua-language-server
     texlab
