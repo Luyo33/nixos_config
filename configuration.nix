@@ -43,7 +43,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 7d";
+      options = "--delete-older-than 17d";
     };
     settings.auto-optimise-store = true;
     # Detects files with identical content in store and replace them with hard links to a single copy
