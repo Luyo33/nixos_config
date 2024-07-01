@@ -60,7 +60,7 @@
     clang-tools
     gnumake
     neovim
-    nixfmt
+    nixfmt-classic
     stylua
     sumneko-lua-language-server
     bear
