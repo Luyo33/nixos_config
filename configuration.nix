@@ -10,15 +10,23 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  boot.loader.grub = {
-    enable = true;
-    device = "nodev";
-    efiSupport = true;
-    enableCryptodisk = true;
+  boot = {
+    kernel = {
+      sysctl = {
+        "kernel.core_pattern" = "/var/crash/core.%t.%p";
+        "kernel.panic" = 10;
+        "kernel.unknown_mni_panic" = 1;
+      };
+    };
+    loader.grub = {
+      enable = true;
+      device = "nodev";
+      efiSupport = true;
+      enableCryptodisk = true;
+    };
   };
 
   nix = {
-    package = pkgs.nixUnstable;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
