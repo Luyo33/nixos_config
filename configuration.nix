@@ -84,7 +84,7 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    options = "caps:swapescape";
+    options = "caps:escape";
     layout = "us";
   };
   services.xserver.autoRepeatDelay = 220;
