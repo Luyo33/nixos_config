@@ -159,7 +159,13 @@
   virtualisation.virtualbox.host.enable = true;
   virtualisation.docker.enable = true;
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    extraConfig = ''
+      PasswordAuthentication no
+    '';
+  };
+
 
   # List services that you want to enable:
 
