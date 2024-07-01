@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       scrolling = {
-        history = 1000;
+        history = 10000;
         multiplier = 5;
       };
 
