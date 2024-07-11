@@ -79,8 +79,8 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.windowManager.bspwm.enable = true;
 
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.enable = true;
+  hardware.graphics.enable32Bit = true;
+  hardware.graphics.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
