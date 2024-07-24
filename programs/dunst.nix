@@ -43,8 +43,6 @@
         icon_position = false;
         min_icon_size = 32;
         max_icon_size = 64;
-        icon_path =
-          "/home/stolen/.icons/tokyonight/status/22:/home/stolen/.icons/tokyonight/devices/22:/home/stolen/.icons/tokyonight/panel/22";
 
         # History
         sticky_history = true;
@@ -61,9 +59,9 @@
         force_xinerama = false;
 
         # Mouse
-        mouse_left_click = "close_current";
+        mouse_left_click = "do_action, close_current";
         mouse_middle_click = "close_all";
-        mouse_right_click = "do_action, close_current";
+        mouse_right_click = "close_current";
       };
 
       experimental.per_monitor_dpi = false;
