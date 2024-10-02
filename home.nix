@@ -26,6 +26,7 @@
     tree
     ripgrep
     neofetch
+    file
 
     # Utility
     flameshot
@@ -55,6 +56,7 @@
     texlive.combined.scheme-full
 
     # Dev
+    python3
     go
     gcc
     clang-tools
@@ -68,6 +70,14 @@
     pre-commit
     nix-direnv
     direnv
+    tmux
+    black
+
+    # Munic Specifix
+    icecream
+    asciidoctor
+    can-utils
+    daemontools
 
     # Formatters and language servers
     nixpkgs-fmt
