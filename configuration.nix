@@ -142,6 +142,10 @@
     extraGroups = [ "wheel" "networkmanager" "video" "vboxusers" "docker" "jackaudio" "audio" ];
   };
 
+  security.sudo.extraConfig = ''
+    %wheel       ALL=(ALL) NOPASSWD: /run/current-system/sw/bin/iptables,/run/current-system/sw/bin/nft,/run/current-system/sw/bin/ip
+  '';
+
   programs.fish.enable = true;
 
   # List packages installed in system profile. To search, run:
@@ -150,10 +154,14 @@
     git
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    sshpass
     networkmanagerapplet
     networkmanager
     firefox
     pavucontrol
+    iproute2
+    iptables
+    nftables
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -175,6 +183,47 @@
     extraConfig = ''
       PasswordAuthentication no
     '';
+  };
+
+  # Systemd
+  systemd.user = {
+    services = {
+      mdmd = {
+        enable = true;
+        unitConfig = {
+          Description = "Munic Device Manager Daemon";
+
+          # Ask for graphical interface and the dbus socket.
+          Wants = "graphical.target dbus.socket";
+          After = "graphical.target dbus.socket";
+        };
+        serviceConfig = {
+          PermissionsStartOnly = "false";
+          Sockets = "mdmd.socket";
+          StandardInput = "socket";
+          StandardError = "journal";
+          Environment = [
+            "PATH=/run/wrappers/bin/:/etc/profiles/per-user/bijan/bin/:/run/current-system/sw/bin/"
+            "TERM=alacritty"
+          ];
+          ExecStart = "/home/bijan/mdmd/target/debug/mdmd";
+          Type = "simple";
+          RemainAfterExit = "false";
+          Restart = "always";
+          RestartSec = "1s";
+          TimeoutSec = "180";
+        };
+        wantedBy = [ "default.target" ];
+      };
+    };
+    sockets = {
+      mdmd = {
+        socketConfig = {
+          ListenFIFO = "%t/mdmd/mdmd.stdin";
+          Service = "mdmd.service";
+        };
+      };
+    };
   };
 
   # Udev rules
