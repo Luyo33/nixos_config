@@ -79,6 +79,19 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.windowManager.bspwm.enable = true;
 
+  # Fix for some x11 apps
+  programs.nix-ld = {
+    libraries = with pkgs; [
+      xorg.libX11
+      xorg.libXcursor
+      xorg.libxcb
+      xorg.libXi
+      libxkbcommon
+    ];
+    enable = true;
+  };
+
+
   hardware.graphics.enable32Bit = true;
   hardware.graphics.enable = true;
 
