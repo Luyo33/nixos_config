@@ -38,6 +38,12 @@
     arandr
     man-pages
     keepassxc
+    pandoc
+    texlive.combined.scheme-full
+    markdownlint-cli
+    fzf
+    jq
+    rclone
 
     # Fonts
     fira
@@ -52,11 +58,8 @@
     font-manager
     lxappearance
     bluez
-    pandoc
-    texlive.combined.scheme-full
 
     # Dev
-    python3
     go
     gcc
     clang-tools
@@ -72,6 +75,7 @@
     direnv
     tmux
     black
+    shellcheck
 
     # Munic Specifix
     icecream
@@ -86,7 +90,7 @@
     texlab
 
     # Fonts/Theme
-    (nerdfonts.override { fonts = [ "Hack" ]; })
+    nerd-fonts.hack
     iosevka
     noto-fonts-emoji
     papirus-icon-theme
