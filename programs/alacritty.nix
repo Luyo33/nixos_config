@@ -4,6 +4,11 @@
   programs.alacritty = {
     enable = true;
     settings = {
+      general = {
+        live_config_reload = true;
+        working_directory = "None";
+      };
+
       scrolling = {
         history = 10000;
         multiplier = 5;
@@ -92,11 +97,7 @@
         thickness = 0.15;
       };
 
-      live_config_reload = true;
-
-      shell.program = "${pkgs.fish}/bin/fish";
-
-      working_directory = "None";
+      terminal.shell.program = "${pkgs.fish}/bin/fish";
 
       mouse = {
         hide_when_typing = true;
